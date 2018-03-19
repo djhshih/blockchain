@@ -1,0 +1,52 @@
+name:                blockchain
+version:             0.1.0.0
+github:              "djhshih/blockchain"
+license:             BSD3
+author:              "David J. H. Shih"
+maintainer:          "djh.shih@gmail.com"
+copyright:           "2018 David J. H. Shih"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github at <https://github.com/djhshih/blockchain#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- cryptonite >= 0.25
+- memory
+- bytestring
+- cereal >= 0.5.5.0
+
+library:
+  source-dirs: src
+
+executables:
+  blockchain-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - blockchain
+
+tests:
+  blockchain-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - blockchain
